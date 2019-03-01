@@ -1,0 +1,167 @@
+using System;
+//Name:David Mackenzie
+//Date:01/03/19
+//Project:Pacman game
+//Description: IE Coding challenge
+
+
+public class Game{
+
+  public Pacman pacman;
+  bool gameState=true;
+  
+  //Get inputs from user
+  //Get X coordinate
+  Console.WriteLine("Please enter starting X coordinate: ");
+  x = Convert.ToInt32(Console.Readline());
+  while(x < 0 && x >4){
+    Console.WriteLine("Please enter a valid number between 0 and 4"); 
+    x = Convert.ToInt32(Console.Readline());
+  }
+  
+  //Get Y coordinate
+  Console.WriteLine("Please enter starting Y coordinate: ");
+  y=Console.Readline();
+  while(y <0 && y > 4){
+    Console.WriteLine("Please enter a valid number between 0 and 4"); 
+    y = Convert.ToInt32(Console.Readline());
+  }
+  
+  //Get direction
+  Console.WriteLine("Please enter which way pacman is facing, ["NORTH,SOUTH, EAST OR WEST"]);
+  pacman.f=Console.Readline();
+  
+  //Call place method
+  place(x,y,f);
+  
+  //Begin the game and ask user for inputs
+  while(gameState){
+    string input="";
+    string rotate="";
+    
+    //Decide if play wants to move or rotate
+    Console.WriteLine("Please choose to move or rotate pacman ['move' or 'rotate']);
+    input=Console.ReadLine();
+    
+    switch(input){
+        case "move":
+          move();
+          break;
+        case "rotate"
+          Console.WriteLine("Please turn [LEFT or RIGHT]")
+          C
+    }
+    
+    //Call method to move
+    move();
+    
+    //Check to see if pacman is off the board
+    if(pacman.x<0||pacman.x>4}}
+      pacman.y<0||pacman.y>4){
+      Console.WriteLine("Cannot move pacman off board,please try again!" )
+    
+    //Ask user if they would like to move again
+    Console.WriteLine("Would you like to move again? 'Y'/'N')
+    input=Console.ReadLine();
+    
+    if(input.Equals('Y')||input.Equals('y')){
+      gameState=true;
+    }
+    else
+    {
+      gameState=false;
+    }
+  }
+   
+  //Display pacman position after person has finished playing game 
+  report();
+  
+  //Requires grid coordins and facing direction
+  public static void place(int x, int y, string f){   
+    //Place pacman on board
+    pacman.x = x;
+    pacman.y = y;
+    pacman.f = f; 
+  }
+  
+  public static void move(){
+    string input;
+    input=pacman.f;
+    
+    switch(input){
+      Case "NORTH":
+        pacman.y+1;
+        break;
+      Case "SOUTH":
+        pacman.y-1;
+        break;
+      Case "WEST""
+        pacman.x-1;
+        break;
+      Case "EAST":
+        pacman.x+1;
+        break;
+      Default:
+        Console.WriteLine("Unable to move pacman");   
+    }
+   
+  }
+  
+  //Method to Rotate pacman to the left
+  public static void left(){
+      Switch(pacman.f){
+        Case: "NORTH"
+          pacman.f="WEST";
+          break;
+        Case: "WEST"
+          pacman.f="SOUTH";
+          break;
+        Case: "SOUTH"
+          pacman.f="EAST";
+          break;
+        Case: "EAST"
+          pacman.f ="NORTH";
+          break;
+        Default:
+          break;
+      }
+  }
+  
+  //Method Rotate pacman to the right
+  public static void right(){
+        Switch(pacman.f){
+        Case: "NORTH"
+          pacman.f="EAST";
+          break;
+        Case: "EAST"
+          pacman.f="SOUTH";
+          break;
+        Case: "SOUTH"
+          pacman.f="WEST";
+          break;
+        Case: "WEST"
+          pacman.f ="NORTH";
+          break;
+        Default:
+          break;
+      }
+  }
+  
+  //Method to display position
+  public static void report(){
+    Console.WriteLine(pacman.x.ToString(),pacman.y.ToString(),pacman.f);
+  }
+  
+}
+
+//Class file for Pacman object
+public class Pacman
+  public int X {get; set; };
+  public int Y {get; set;};
+  public string F {get; set;};
+  
+  public Pacman(int x,int y, string f){
+    X = x;
+    Y = y;
+    F = f;
+  }
